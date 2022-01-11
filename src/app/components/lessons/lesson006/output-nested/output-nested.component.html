@@ -1,0 +1,19 @@
+<div class="p-3 background">
+
+    <p>Child</p>
+    <div class="row">
+        <label>
+            <input type="text" #input (input)="read(input.value)"> Name
+        </label>
+    </div>
+    
+    <div class="row pt-3">
+        <div class="col-3 pe-1">
+            <button mat-raised-button color="accent" (click)="increment()">Increment</button>
+        </div>
+        <div class="col-3 ps-0">
+            <button mat-raised-button color="accent" (click)="reset()">Reset counter</button>
+        </div>
+    </div>
+    
+</div>

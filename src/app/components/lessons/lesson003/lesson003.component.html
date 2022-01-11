@@ -1,0 +1,86 @@
+<div class="card-body p-4">
+    <h1>Lesson 003</h1>
+
+    <div class="row pb-2">
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="increment()">Increment</button>
+        </div>
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="decrement()">Decrement</button>
+        </div>
+        <div class="col-1 ps-3">
+            <button mat-raised-button color="accent" (click)="colsileloger(counter)">Loger</button>
+        </div>
+    </div>
+    <div>
+        <span>{{counter}}</span>
+    </div>
+
+    <hr>
+    <div #one>One</div>
+    <span #three>Two</span>
+    <p #two>Three</p>
+    <div>
+        <span>{{resulr}}</span>
+    </div>
+    <div class="col-1 pt-3">
+        <button mat-raised-button color="accent" (click)="show(one, two, three)">Show</button>
+    </div>
+
+    <hr>
+    <input matInput placeholder="name" #inputName (keyup.enter)="writeName(inputName.value)">
+    <div>
+        <h3>{{name}}</h3>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="col-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th [attr.class]="'text-center'" #thThead [attr.colspan]="colspan">Name</th>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th [textContent]="textInformation">Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{testName}}</td>
+                        <td [innerText]="textInformation">32</td>
+                    </tr>
+                    <tr>
+                        <td>{{testName}}</td>
+                        <td [innerHTML]="textInformation">22</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-1">
+        <button mat-raised-button color="accent" (click)="showTable(thThead)">Show log</button>
+    </div>
+
+    <hr>
+    <div [class]="classOne" role="alert">
+        This is a primary alert—check it out!
+    </div>
+
+    <div [class.alert-primary]="flagOne" [class.alert-secondary]="!flagOne" [class]="'alert'" role="alert">
+        This is a secondary alert—check it out!
+    </div>
+    <div class="col-1">
+        <button mat-raised-button color="accent" (click)="flagOne = !flagOne">change</button>
+    </div>
+<hr>
+    <div [class]="flagtwo ? 'alert alert-danger' : 'alert alert-warning' " role="alert">
+        This is a danger alert—check it out!
+    </div>
+    <div class="col-1">
+        <button mat-raised-button color="accent" (click)="flagtwo = !flagtwo">change</button>
+    </div>
+<hr>
+
+</div>

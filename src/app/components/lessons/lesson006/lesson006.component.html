@@ -1,0 +1,101 @@
+<div class="card-body p-4">
+    <h1>Lesson 006</h1>
+    <div class="row justify-content-center">
+        <h2 class="col-4">@Input</h2>
+    </div>
+    <div>
+        <p>Default nested component without inputs</p>
+        <app-input-nested></app-input-nested>
+        <hr>
+        <p>First variation inputs => name and start counter </p>
+        <app-input-nested name="First name" [counterValue]="startCounterValue"></app-input-nested>
+        <hr>
+        <p>Second variation inputs => name and step of counter</p>
+        <app-input-nested [name]="'Second name'" [step]="stepCounter"></app-input-nested>
+        <hr>
+    </div>
+    <div class="row justify-content-center">
+        <h2 class="col-4">@Output</h2>
+    </div>
+
+    <div class="parrent-background p-3">
+        <p>Parent</p>
+        <div><b>{{text}}</b></div>
+        <div><b>{{counter}}</b></div>
+        <app-output-nested (textEvent)="textEventHandler($event)" (counterEvent)="counterEventHandler($event)">
+        </app-output-nested>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <h2 class="col-4">ng-content</h2>
+    </div>
+
+    <div>
+        <app-ng-content>
+            <p><b>Hello world!</b></p>
+        </app-ng-content>
+    </div>
+    <div>
+        <app-ng-content>
+            <p><b>Hello!</b></p>
+        </app-ng-content>
+    </div>
+    <div>
+        <app-ng-content>
+            <p><b>World!</b></p>
+        </app-ng-content>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <h2 class="col-4">Veiw child</h2>
+    </div>
+
+    <div class="row pb-2">
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="changeColor()">childOne</button>
+        </div>
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="secondChangeColor()">childTwo</button>
+        </div>
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="thirdViewChild.changeColor()">childThree</button>
+        </div>
+    </div>
+    <br>
+    <app-view-child01></app-view-child01>
+    <app-view-child01></app-view-child01>
+    <app-view-child01 #secondViewChild></app-view-child01>
+    <app-view-child01></app-view-child01>
+    <app-view-child01 #thirdViewChild></app-view-child01>
+
+    <hr>
+    <div>
+        <label>
+            <input type="text" #inputTwo>
+            <p class="pt-2">{{textforField}}</p>
+        </label>
+    </div>
+
+    <div class="row pb-2">
+        <div class="col-1 ">
+            <button mat-raised-button color="accent" (click)="takeFocus()">Take Focus</button>
+        </div>
+        <div class="col-1 ps-4">
+            <button mat-raised-button color="accent" (click)="takeValue()">Take Value</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row justify-content-center">
+        <h2 class="col-4">Veiw children</h2>
+    </div>
+    <app-view-child02 #viewChild></app-view-child02>
+    <app-view-child02></app-view-child02>
+    <app-view-child02 #viewChild></app-view-child02>
+    <app-view-child02></app-view-child02>
+    <app-view-child02 #viewChild></app-view-child02>
+    <div class="row pb-2">
+        <div class="col-1 ">
+            <button mat-raised-button color="accent" (click)="addBg()">Click</button>
+        </div>
+    </div>
+</div>

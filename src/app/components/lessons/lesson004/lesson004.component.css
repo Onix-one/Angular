@@ -1,0 +1,15 @@
+.bg{
+    background-color: red;
+    height: 100px;
+    width: 100px;
+}
+.bordered{
+    border: 2px solid black;
+}
+.ps-3 {
+    padding-left: 1rem !important;
+  }
+  .bg-one{
+    background-color: gray; 
+    width: 100px;
+  }

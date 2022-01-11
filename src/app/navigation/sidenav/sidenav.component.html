@@ -1,0 +1,80 @@
+<button class="m-2" mat-mini-fab (click)="resize()" (click)="isExpanded = !isExpanded" color="warn">
+    <mat-icon aria-label="Menu">menu</mat-icon>
+</button>
+<mat-nav-list>
+
+    <mat-list-item (click)="onItemSelected(item)" *ngFor="let item of navItems" routerLink={{item.route}}>
+        <mat-icon mat-list-icon>{{item.iconName}}</mat-icon>
+        <span [ngStyle]="{'width': '160px'}" mat-line *ngIf="isExpanded">{{item.displayName}}</span>
+        <span fxFlex *ngIf="item.children && item.children.length && isExpanded">
+            <span fxFlex></span>
+            <mat-icon [@indicatorRotate]="itemIsExpanded ? 'itemIsExpanded': 'itemIsCollapsed'">
+                expand_more
+            </mat-icon>
+        </span>
+    </mat-list-item>
+
+    <mat-nav-list *ngIf="itemIsExpanded" [class]="isExpanded ? 'ps-3' : 'ps-0' ">
+        <mat-list-item *ngFor="let child of itemChildren" routerLink={{child.route}}>
+            <mat-icon mat-list-icon>{{child.iconName}}</mat-icon>
+            <span *ngIf="isExpanded" mat-line>{{child.displayName}}</span>
+        </mat-list-item>
+    </mat-nav-list>
+
+</mat-nav-list>
+
+
+
+
+
+<!-- <mat-nav-list >
+
+    <app-sidenav-item  *ngFor="let item of navItems" [item]="item"></app-sidenav-item> -->
+
+
+<!-- 
+    <a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px'}" (click)="onItemSelected(item)"
+    [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}"
+    class="menu-list-item ">
+   <mat-icon class="routeIcon pe-5">{{item.iconName}}</mat-icon>
+   <h3>{{item.displayName}}</h3>
+ 
+   <span fxFlex *ngIf="item.children && item.children.length">
+     <span fxFlex></span>
+     <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+       expand_more
+     </mat-icon>
+   </span>
+ </a>
+ <div *ngIf="expanded">
+   <app-sidenav-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
+   </app-sidenav-item>
+ </div> -->
+
+
+
+
+
+
+
+<!-- <mat-list-item routerLink="">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <span mat-line *ngIf="isExpanded">Home</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/students">
+        <mat-icon mat-list-icon>assignment</mat-icon>
+        <span mat-line mat-line *ngIf="isExpanded">Students</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/groups">
+        <mat-icon mat-list-icon>domain</mat-icon>
+        <hspan mat-line *ngIf="isExpanded">Group</hspan>
+    </mat-list-item>
+    <mat-list-item routerLink="/pipelines">
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <span mat-line *ngIf="isExpanded">Pipelines</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/templates">
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <span mat-line *ngIf="isExpanded">Templates</span>
+    </mat-list-item> -->
+<!-- </mat-nav-list> -->

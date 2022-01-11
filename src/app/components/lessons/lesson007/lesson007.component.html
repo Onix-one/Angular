@@ -1,0 +1,24 @@
+<div class="card-body p-4">
+    <h1>Lesson 007</h1>
+    <div class="row justify-content-center">
+        <h2 class="col-4">Services</h2>
+    </div>
+    <p>Simple service</p>
+    <span>{{simpleService.counter}}</span>
+    <div class="row pb-2 pt-2">
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="simpleService.increment()">increment</button>
+        </div>
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="simpleService.decrement()">decrement</button>
+        </div>
+    </div>
+<hr>
+<p>Local service</p>
+<ul>
+    <li *ngFor="let item of itemsList">{{item}}</li>
+</ul>
+
+
+
+</div>

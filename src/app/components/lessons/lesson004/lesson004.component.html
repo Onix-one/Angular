@@ -1,0 +1,129 @@
+<div class="card-body p-4">
+    <h1>Lesson 004</h1>
+    <div class="row justify-content-center">
+        <h2 class="col-1">*ng</h2>
+    </div>
+    <!-- Binding-->
+    <div class="row">
+        <div class="col-1">
+            <div [class.bg]="flag" [class.bordered]="flag"></div>
+        </div>
+        <div class="col-1">
+            <div [ngClass]="{bg:flag, bordered: flag}"></div>
+        </div>
+        <div class="col-1">
+            <div [ngClass]="['bg','bordered']"></div>
+        </div>
+        <div class="col-1">
+            <div [ngClass]="'bg bordered'"></div>
+        </div>
+    </div>
+    <div class="col-1  pt-1">
+        <button mat-raised-button color="accent" (click)="flag = !flag">Click</button>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-1">
+            <div [style.background-color]="'green'" [style.width]="'100px'" [style.height]="'100px'">Style</div>
+        </div>
+        <div class="col-1">
+            <div [ngStyle]="{color: 'black', 'width':'100px', 'height':'100px',
+         'background-color': flagTwo ? 'red': 'green'}">ngStyle</div>
+        </div>
+    </div>
+    <div class="col-1 pt-1">
+        <button mat-raised-button color="accent" (click)="flagTwo = !flagTwo">Click</button>
+    </div>
+    <!-- *ngIf-->
+    <hr>
+    <label>
+        <input type="checkbox" (change)="flagThree = !flagThree">
+        <span class="mb-2"> Chackbox</span>
+    </label>
+    <div *ngIf="flagThree">When "flagThree" TRUE</div>
+    <div *ngIf="!flagThree">When "flagThree" FALSE</div>
+    <div [style.display]="flagThree ? 'block': 'none'">"Div" is hidden only visual, but it be into HTML</div>
+    <hr>
+    <label>
+        <input type="checkbox" [disabled]="!flagFour" (change)="changeFlag()">
+        <span class="mb-2"> Change "flagFour" state</span>
+    </label>
+    <div *ngIf="flagFour; else templateOne">State TRUE</div>
+    <ng-template #templateOne>
+        <div>State False</div>
+    </ng-template>
+
+    <div *ngIf="flagFour; then templateTwo else templateThree"></div>
+    <ng-template #templateTwo>Template Two</ng-template>
+    <ng-template #templateThree>Template Three</ng-template>
+
+    <!-- *ngSwitch-->
+    <hr>
+    <h4>Chose the month</h4>
+    <div [ngSwitch]="selectedMonth">
+        <div *ngSwitchCase="'June'">June</div>
+        <div *ngSwitchCase="'July'">July</div>
+        <div *ngSwitchCase="'August'">August</div>
+        <div *ngSwitchDefault>none</div>
+    </div>
+    <br>
+    <div class="col-1">
+        <button mat-raised-button color="accent" (click)="switch()">Swith</button>
+    </div>
+    <hr>
+    <!-- *ngFor-->
+    <div class="row pb-2">
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="addString()">Add</button>
+        </div>
+        <div class="col-1">
+            <button mat-raised-button color="accent" (click)="removeString()">Remove</button>
+        </div>
+    </div>
+    <ul>
+        <li *ngFor="let str of stringArray">
+            {{str}}
+        </li>
+    </ul>
+    <ul>
+        <li *ngFor="let obj of objArray; let i = index; let ev = even" [class.bg-one]="ev ? true : false">
+            {{i+1}}) - {{obj.prop}}
+        </li>
+    </ul>
+    <div class="row justify-content-center">
+        <ng-template ngFor let-item [ngForOf]="items">
+            <div class="col-1">
+                {{item}}
+            </div>
+        </ng-template>
+    </div>
+    <hr>
+    <!-- Pipes-->
+    <div class="row justify-content-center">
+        <h2 class="col-1">Pipes</h2>
+    </div>
+    <div class="row">
+        <div class="col-2">uppercase: {{textOne | uppercase}}</div>
+        <div class="col-2">lowercase: {{textOne | lowercase}}</div>
+        <div class="col-2">titlecase: {{textOne | titlecase}}</div>
+        <div class="col-2">slice:2:4: {{textOne | slice:2:4}}</div>
+    </div>
+    <div class="row">
+        <div class="col-2">origin: {{numberOne}}</div>
+        <div class="col-2">number: {{numberOne | number}}</div>
+        <div class="col-2"> number:'2.1-3': {{numberOne | number:'2.1-3'}}</div>
+        <div class="col-2">number:'1.0-0': {{numberOne | number:'1.0-0'}}</div>
+    </div>
+    <div class="row">
+        <div class="col-5">full: {{date}}</div>
+        <div class="col-2">date: {{date | date}}</div>
+        <div class="col-2">date:'yyy.MM': {{date | date:'yyy.MM'}}</div>
+        <div class="col-3">date:'MMMM yyyy': {{date | date:'MMMM yyyy'}}</div>
+    </div>
+    <div class="row">
+        <div class="col">json: {{objArray | json}}</div>
+    </div>
+    <div class="row">
+        <pre class="col">json: {{objArray | json}}</pre>
+    </div>
+</div>
